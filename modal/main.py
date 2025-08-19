@@ -49,6 +49,10 @@ def ldd_version_latest_debian_slim():
 def mlx_quick_test():
     import subprocess
 
+    print(subprocess.run(["nvidia-smi"], capture_output=True, text=True).stdout)
+
+    print(subprocess.run(["nvidia-smi", "--query-gpu=name,compute_cap", "--format=csv,noheader"], capture_output=True, text=True).stdout)
+
     print(subprocess.run(["ldd", "--version"], capture_output=True, text=True).stdout)
     print(
         subprocess.run(

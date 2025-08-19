@@ -1,8 +1,11 @@
 This error happens on:
 
 - `debian:stable-20250811-slim`
+- `Debian GLIBC 2.41-12` (satisfies `glibc>2.35` requirement for built `mlx[cuda]` wheels)
+- Nvidia `Driver Version: 575.57.08`
+- `CUDA Version: 12.9`
+- `NVIDIA A100-SXM4-40GB, 8.0`
 - Python 3.11
-- `Debian GLIBC 2.41-12` (> 2.35 requirement for built `mlx[cuda]` wheels)
 
 
 ```py
@@ -20,6 +23,29 @@ $ modal run main.py::mlx_quick_test
 ├── 🔨 Created function ldd_version_default_modal_debian_slim.
 ├── 🔨 Created function ldd_version_latest_debian_slim.
 └── 🔨 Created function mlx_quick_test.
+Tue Aug 19 23:54:22 2025
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 575.57.08              Driver Version: 575.57.08      CUDA Version: 12.9     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-SXM4-40GB          On  |   00000000:80:00.0 Off |                    0 |
+| N/A   36C    P0             52W /  400W |       0MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+
+NVIDIA A100-SXM4-40GB, 8.0
+
 ldd (Debian GLIBC 2.41-12) 2.41
 Copyright (C) 2024 Free Software Foundation, Inc.
 This is free software; see the source for copying conditions.  There is NO
@@ -88,6 +114,7 @@ yarl==1.20.1
 zipp==3.23.0
 
 Stopping app - local entrypoint completed.
-Exception ignored in atexit callback: <nanobind.nb_func object at 0x2b17bc265360>
+Exception ignored in atexit callback: <nanobind.nb_func object at 0x2ac5e7999360>
 RuntimeError: cudaMemAdvise(data_, small_pool_size, cudaMemAdviseSetReadMostly, 0) failed: invalid argument
+✓ App completed. View run at https://modal.com/apps/anthonywu/main/ap-dolgG8hdv4BiLURQuX1WKQ
 ```
