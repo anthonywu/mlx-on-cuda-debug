@@ -1,4 +1,12 @@
-This error happens on:
+`mlx[cuda]`'s requirements as documented upstream is:
+
+- Nvidia architecture >= SM 7.0 (Volta)
+- Nvidia driver >= 550.54.14
+- CUDA toolkit >= 12.0
+- Linux distribution with glibc >= 2.35
+- Python >= 3.9
+
+The following setup meets all requirements, the error happens on:
 
 - `debian:stable-20250811-slim`
 - `Debian GLIBC 2.41-12` (satisfies `glibc>2.35` requirement for built `mlx[cuda]` wheels)
